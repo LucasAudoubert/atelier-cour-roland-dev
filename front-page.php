@@ -1,0 +1,26 @@
+<?php
+/*
+ * Front page template for acr-theme
+ */
+
+get_header();
+?>
+<main id="primary" class="site-main">
+    <section class="hero">
+        <h1>Bienvenue sur le site de l'Atelier Cour Roland</h1>
+        <p>Découvrez nos créations et réservez votre cours dès aujourd'hui.</p>
+    </section>
+    <?php
+    if (have_posts()) :
+        while (have_posts()) : the_post();
+            get_template_part('template-parts/content', get_post_type());
+        endwhile;
+        the_posts_navigation();
+    else :
+        get_template_part('template-parts/content', 'none');
+    endif;
+    ?>
+</main>
+<?php
+get_footer();
+?>
